@@ -1,0 +1,7 @@
+@charset "EUC-KR";
+/*table css*/
+
+table, th, tr { 
+	border : 1px solid black;
+	border-collapse: collapse;
+};
