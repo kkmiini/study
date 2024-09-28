@@ -4,62 +4,70 @@
       xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"></meta>
-    <link rel="stylesheet" href="/css/base.css" />
+ <!--    <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/css/jquery.dialog.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css"/>
     <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css"/>
- <!--    <link rel="stylesheet" href="/css/register.css" /> --> 
+    <link rel="stylesheet" href="/css/register.css" /> --> 
  
  	<style>
- 		table, th, tr, td { border : 1px solid black; border-collapse: collapse; font-weight:normal;}
+ 		table, th, tr, td { border : 1px solid black; border-collapse: collapse; font-weight:normal; font-size:15px}
+  		.container { margin: 20px 80px 0 80px; font-size:15px;}		
+		.title { height:40px; background:linear-gradient(gray,white,gray); border-radius:5px; text-align : left; line-height : 40px; font-size:20px;}
+ 		hr { text-align:left; margin-left:0; background:skyblue; height:2px; width: 98%; border:0; }
+ 		p {margin: 30px 0 10px 0; font-size:20px;}
+ 		.skill select {appearance:none; border:none; height:100%; width:100%; font-size:15px; text-align:center;}
+ 		
+
  	</style>
 
 </head>
 
 <body>
 <div class="container">
-	<div class="company">株式会社ブライトスター</div>
-	<div class="company_en">BRIGHT STAR CO.LTD.</div>
-	<div class="hd">社内統合管理システム</div>
-</div>
-	<div class="title">■ 社員登録</div>
-	<p>基本情報</p>
+<div style="text-align:left; font-size:20px;"><b>株式会社ブライトスター</b></div>
+	<div style="text-align:center; font-size:40px;"><b>社内統合管理システム</b></div>
+	<div style="margin:0 0 15px 0; font-size:12px">BRIGHT STAR CO.LTD.</div>
+<div class="title"><b>■ 社員登録</b></div>
+
+	<p style="margin-top:10px;">基本情報</p>
 	<hr></hr>
 <form>
-	<div>
-		<label for="staff_code">社員コード: </label>
-		<input type="text" id="staff_code" name="code_id" />
+	<div style="margin-bottom: 15px;">
+		<label style="margin-right: 5em;">社員コード:</label>
+		<input type="text" id="staff_code" name="code_id" style="width:8em;"/>
 	</div>
-	<div>
-		<label for="staff_name">社員名（漢字） </label>
-		姓<input type="text" id="staff_lastname" name="lastname_id" />
-		名<input type="text" id="staff_firstname" name="firstname_id" />必須
+	<div style="margin-bottom: 15px;">
+		<label style="margin-right: 2em;">社員名（漢字)</label>
+		姓<input type="text" id="staff_lastname" name="lastname_id" style="margin: 0 14px 0 14px; width:8em;" />
+		名<input type="text" id="staff_firstname" name="firstname_id" style="margin: 0 25px 0 14px; width:8em;" />必須
 	</div>	
 	<div>
 		<label for="gender">性別 </label>
-		 <input type="radio" name="gender" value="male" /> 男
-		 <input type="radio" name="gender" value="female" /> 女
+		 <input type="radio" name="gender" value="male" style="margin: 0 5px 0 95px;"/>男
+		 <input type="radio" name="gender" value="female" style="margin-left: 20px;" />女
 	</div>
+	<p>会社関連情報</p>
 	<hr></hr>
-	<div>
-		<label for="company">所属会社 </label>
-		<select name="company">
+	<div style="margin-bottom: 15px;">
+		<label style="margin-right: 6em;">所属会社</label>
+		<select style="height:24px; ">
 			<option value="brightstar">株式会社ブライトスター</option>
 			<option value="topcloud">株式会社トップクラウド</option>
 		</select>
 	</div>
-	<div>
-		<label>入社日 </label>
-		<input type="date" name="joindate" id="joindate" />
+	<div style="margin-bottom: 15px;">
+		<label style="margin-right: 7em;">入社日</label>
+		<input type="date" name="joindate" id="joindate" style="height:20px;"/>
 	</div>
-	<div>
-		<label>退社日 </label>
+	<div style="margin-bottom: 15px;">
+		<label style="margin-right: 7em;">退社日</label>
 		<input type="text" name="enddate" id="enddate" />※YYYY-MM-DD				
 	</div>
-	<div>
-		<label for="jobcategory">職業種類 </label>
-		<select name="jobcategory">
+	<div style="margin-bottom: 15px;">
+		<label style="margin-right: 6em;">職業種類 </label>
+		<select name="jobcategory" style="height:22px;">
 			<option value="executive">役員</option>
 			<option value="general_affairs">総務</option>
 			<option value="it_sales">IT営業</option>
@@ -69,11 +77,11 @@
 		</select>
 	</div>
 	
-	<h2>給与関連情報</h2>
+	<p>給与関連情報</p>
 	<hr></hr>
-	<table>
-		<caption>給与振込口座</caption>
-		<tr>
+	<table style="width:50%; color:red;">
+		<caption style="text-align:left;">給与振込口座</caption>
+		<tr style="background-color: skyblue; text-align:left;">
 			<th>金融機関コード</th>
 			<th>金融機関名</th>
 			<th>支店名コード</th>
@@ -83,19 +91,24 @@
 			<th>名義人</th>			
 		</tr>
 		<tr>
-			<th>0005</th>
-			<th>三菱UFJ銀行</th>
-			<th>316</th>
-			<th>福生支店</th>
-			<th>普通</th>
-			<th>1234567</th>
-			<th>フクダ リョウジ</th>			
+			<td>0005</td>
+			<td>三菱UFJ銀行</td>
+			<td>316</td>
+			<td>福生支店</td>
+			<td style="background-color:#bdc3c7; text-align:center;">普通</td>
+			<td>1234567</td>
+			<td>フクダ リョウジ</td>			
 		</tr>
 	</table>
-	<table>
-		<caption>技術経験        ◎：実務経験１年以上 ／ ○：実務経験有り ／ △：知識有り</caption>
+	
+	<div style="margin: 30px 0 10px 0; ">
+		<label style="font-size:20px; margin-right:18.5em;">技術経験</label> 
+		<label style="text-align: right; font-size:15px;">◎：実務経験１年以上 ／ ○：実務経験有り ／ △：知識有り</label>
+	</div>
+	<hr></hr>	
+	<table class="skill" style="width:50%;">
 		<tr>
-			<td rowspan='3'>ＯＳ</td>
+			<td rowspan='3' style="background-color:#d4e6f1; text-align:center;">ＯＳ</td>
 			<td>DOS</td>
 			<td>
 				<select>
@@ -215,7 +228,7 @@
 					<option>△</option>
 				</select>
 			</td>	
-			<td>azure</td>
+			<td style="background-color:#f9e79f;">azure</td>
 			<td>
 				<select>
 					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
@@ -235,16 +248,16 @@
 			</td>				
 		</tr>	
 	</table>
-	<div>備考及び自己アピール</div>
+	<div style="margin-top:30px; background-color:#d4e6f1; border-style: solid; border-width:1px; border-bottom: none; width:250px; "><b> 備考及び自己アピール</b></div>
 	<textarea cols="85" rows="10" style="overflow-y:scroll; resize: none;" required="required"></textarea>
 </form>
-<button type="button">登 録 </button>
+	<hr></hr>	
+<button type="button" style="margin:30px 50% 30px 50%; height:30px; width:5em; background:linear-gradient(skyblue,white,skyblue); border-radius:5px; border:none; font-size:20px;" ><b>登 録</b></button>
 
 
 
 
-
-
+</div>
 </body>
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>
