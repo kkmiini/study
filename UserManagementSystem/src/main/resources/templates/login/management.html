@@ -1,0 +1,110 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:float="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"></meta>
+<!--     <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dialog.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" href="/css/register.css" /> --> 
+ 
+ 	<style>
+ 		table, th, tr, td { border : 1px solid black; border-collapse: collapse; font-weight:normal; font-size:15px}
+ 		.container { margin: 20px 80px 0 80px;  font-size:15px; }
+ 		.category { margin : 20px 0px; height: 30px; width:80px; background-color:red; color:white; text-align : center; line-height : 30px; font-size:12px;}
+ 		.title { height:40px; background:linear-gradient(gray,white,gray); border-radius:5px; text-align : left; line-height : 40px; font-size:20px;}
+ 		.search { margin : 10px 0px 20px 10px; }
+ 	</style>
+</head>
+<body>
+<div class="container">
+	<div style="text-align:left; font-size:20px;"><b>株式会社ブライトスター</b></div>
+	<div style="text-align:center; font-size:40px;"><b>社内統合管理システム</b></div>
+	<div style="font-size:12px">BRIGHT STAR CO.LTD.</div>
+<div class="category">社員管理</div>
+<div class="title"><b>■ 社員管理</b></div>
+<p>■検索条件</p>
+<div class="search">
+<div>
+		<label style="margin:0px 15px 0px 0px;">所属会社 </label>
+		<select name="company" style="height: 30px; width:15em;">
+			<option value="all">全て</option>			
+			<option value="brightstar">株式会社ブライトスター</option>
+			<option value="topcloud">株式会社トップクラウド</option>
+		</select>
+	<label style="margin:0px 15px 0px 100px;">社員名 </label>
+	<input type="text" id="name" style="height: 24px; width:15em;"/>
+</div>
+<div style="margin:30px 0px;">
+		<label style="margin:0px 15px 0px 0px;">職業種類 </label>
+		<select style="height: 30px; width:15em;">
+			<option value="executive">役員</option>
+			<option value="general_affairs">総務</option>
+			<option value="it_sales">IT営業</option>
+			<option value="it_engineer"  selected="selected">ITエンジニア</option>
+			<option value="real_estate_staff">不動産スタッフ</option>	
+		</select>
+    <label for="employment" style="margin:0px 15px 0px 100px; ">在職</label>
+    <input type="checkbox" id="employment" name="employment" />
+    <label for="unemployed" style="margin:0px 15px 0px 60px; ">非在職</label>
+    <input type="checkbox" id="unemployed" name="unemployed" />
+</div>
+</div>
+<button type="button" style="margin:0px 0px 0px 15px; height:30px; width:5em; background:linear-gradient(skyblue,white,skyblue); border-radius:5px; border:none; font-size:20px;" ><b>検 索</b></button>
+
+<p style="margin:30px 0px 15px 0px;">■社員一覧</p>
+<div style="width:50%; text-align:right; font-size:15px;" >
+	<span style="margin:0 1% 0 0;">件数：</span>
+	<span style="margin:0 10% 0 0; color:blue;">３件</span>
+	<span style="margin:0 4.5% 0 0; color:blue;">新規登録</span>
+</div>
+	<table style="width:50%; text-align:center;">
+		<tr style="background-color: skyblue;">
+			<th style="width:15%;">所属会社</th>
+			<th>社員名</th>
+			<th>性別</th>
+			<th>職業種類</th>
+			<th>入社日</th>
+			<th>退社日</th>
+			<th style="width:12%;">編集</th>		
+		</tr>
+		<tr>
+			<td>（株）ブライトスター</td>
+			<td>馬 XX</td>
+			<td>男</td>
+			<td>ITエンジニア</td>
+			<td>2014-02-11</td>
+			<td></td>	
+			<td style="text-align:left; color:blue;">更新 削除</td>		
+		</tr>	
+		<tr>
+			<td>（株）ブライトスター</td>
+			<td>馬 XX</td>
+			<td>女</td>
+			<td>IT営業</td>
+			<td>2014-02-11</td>
+			<td></td>
+			<td style="text-align:left; color:blue;">更新 削除</td>		
+		</tr>		
+		<tr>
+			<td>（株）トップクラウド</td>
+			<td>王 XX</td>
+			<td>男</td>
+			<td>ITエンジニア</td>
+			<td>2014-02-11</td>
+			<td>2014-02-11</td>
+			<td style="text-align:left; color:blue;">更新 削除</td>		
+		</tr>			
+	</table>
+</div>
+</body>
+<!-- <script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/core.js"></script>
+<script type="text/javascript" src="/js/jquery.dialog.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script> -->
+</html>

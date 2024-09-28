@@ -14,16 +14,21 @@ import com.kyh.system.entity.User;
 import com.kyh.system.service.UserService;
 
 @Controller
-@RequestMapping(value = "register")
+@RequestMapping(value = "")
 public class RegisterController {
 
-    @Autowired
-    private UserService userService;
 
-    @RequestMapping(value = "/", method = {RequestMethod.POST, RequestMethod.GET})
+
+    @RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
     public String register() {
         return "/login/register";
     }
+    
+    @RequestMapping(value = "/management", method = {RequestMethod.POST, RequestMethod.GET})
+    public String management() {
+        return "/login/management";
+    }
+    
 
 
 }
