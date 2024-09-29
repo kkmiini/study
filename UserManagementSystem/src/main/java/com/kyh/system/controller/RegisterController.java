@@ -16,17 +16,20 @@ import com.kyh.system.service.UserService;
 @Controller
 @RequestMapping(value = "")
 public class RegisterController {
-
-
+	
+    @RequestMapping(value = "/management", method = {RequestMethod.POST, RequestMethod.GET})
+    public String management() {
+        return "/login/management";
+    }
 
     @RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
     public String register() {
         return "/login/register";
     }
     
-    @RequestMapping(value = "/management", method = {RequestMethod.POST, RequestMethod.GET})
-    public String management() {
-        return "/login/management";
+    @RequestMapping(value = "/update", method = {RequestMethod.POST, RequestMethod.GET})
+    public String update() {
+        return "/login/update";
     }
     
 
