@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css"/>
     <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" href="/css/register.css" /> --> 
- 
+
+	<link rel="stylesheet" href="css/bank_auto.css" />
+	<script src="https://zipaddr.github.io/bankauto0.js" charset="UTF-8"></script>
  	<style>
  		table, th, tr, td { border : 1px solid black; border-collapse: collapse; font-weight:normal; font-size:15px}
   		.container { margin: 20px 80px 0 80px; font-size:15px;}		
@@ -38,7 +40,7 @@
 <form>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 5em;">社員コード:</label>
-		<input type="text" id="staff_code" name="code_id" style="width:8em;"/>
+		<input type="text" id="staff_code" name="code_id" style="margin: 0 25px 0 0; width:8em; width:8em;"/>必須
 	</div>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 2em;">社員名（漢字)</label>
@@ -81,25 +83,41 @@
 	
 	<p>給与関連情報</p>
 	<hr></hr>
-	<table style="width:50%; color:red;">
+	<table>
 		<caption style="text-align:left;">給与振込口座</caption>
 		<tr style="background-color: skyblue; text-align:left;">
 			<th>金融機関コード</th>
-			<th>金融機関名</th>
+			<th style="width:200px;">金融機関名</th>
 			<th>支店名コード</th>
-			<th>支店名</th>
+			<th style="width:200px;">支店名</th>
 			<th>口座種類</th>
 			<th>口座番号</th>
 			<th>名義人</th>			
 		</tr>
 		<tr>
-			<td>0005</td>
-			<td>三菱UFJ銀行</td>
-			<td>316</td>
-			<td>福生支店</td>
-			<td style="background-color:#bdc3c7; text-align:center;">普通</td>
-			<td>1234567</td>
-			<td>フクダ リョウジ</td>			
+			<td class="tbr_01">
+			<span class="bnk_area" >
+				<input type="text" name="bank_code2" id="bank_code2" class="form_txt-short" placeholder="例：0001" style="position: relative; border:none; "/>
+				<span id="bank_code2_clear" class="bnk_class" style="display:none;">
+					<font style="vertical-align: inherit;">
+					</font>
+				</span>
+				</span>
+			</td>
+			<td><span id="bank_name2"></span></td>
+			<td class="tbr_01">
+			<span class="bnk_area">
+				<input type="text" name="branch_code2" id="branch_code2" class="form_txt-short" placeholder="例：310" style="position: relative; border:none; "/>
+				<span id="branch_code2_clear" class="bnk_clear" style="display:none;">
+					<font style="vertical-align: inherit;">
+					</font>
+				</span>
+			</span>
+			</td>
+			<td><span id="branch_name2"></span></td>
+			<td><input type="text" id="account_type" placeholder="例：普通" style="border:none;" /></td>
+			<td><input type="text" id="account_num" style="border:none;" /></td>
+			<td><input type="text" id="account_name" style="border:none;" /></td>			
 		</tr>
 	</table>
 	
@@ -114,15 +132,17 @@
 			<td>DOS</td>
 			<td>
 				<select>
+					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
 					<option>◎</option>
 					<option>○</option>
-					<option selected="selected">△</option>
+					<option>△</option>
 				</select>
 			</td>
 			<td>Windows</td>
 			<td>
 				<select>
-					<option selected="selected">◎</option>
+					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+					<option>◎</option>
 					<option>○</option>
 					<option>△</option>
 				</select>
@@ -130,15 +150,17 @@
 			<td>Unix</td>
 			<td>
 				<select>
+					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
 					<option>◎</option>
-					<option selected="selected">○</option>
+					<option>○</option>
 					<option>△</option>
 				</select>
 			</td>	
 			<td>Linux</td>
 			<td>
 				<select>
-					<option selected="selected">◎</option>
+					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+					<option>◎</option>
 					<option>○</option>
 					<option>△</option>
 				</select>
@@ -230,7 +252,7 @@
 					<option>△</option>
 				</select>
 			</td>	
-			<td style="background-color:#f9e79f;">azure</td>
+			<td>azure</td>
 			<td>
 				<select>
 					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
@@ -240,21 +262,14 @@
 				</select>
 			</td>	
 			<td>&nbsp;</td>			
-			<td>
-				<select>
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>				
+		
 		</tr>	
 	</table>
 	<div style="margin-top:30px; background-color:#d4e6f1; border-style: solid; border-width:1px; border-bottom: none; width:250px; "><b> 備考及び自己アピール</b></div>
-	<textarea cols="85" rows="10" style="overflow-y:scroll; resize: none;" required="required"></textarea>
+	<textarea cols="85" rows="10"  required="required" id="textarea" style="overflow-y:scroll; resize: none;"></textarea>
 </form>
 	<hr></hr>	
-<button type="button"><b>登 録</b></button>
+<button type="button" id="btn"><b>登 録</b></button>
 
 
 
@@ -267,5 +282,6 @@
 <script type="text/javascript" src="/js/jquery.dialog.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/js/register.js"></script>
 
 </html>
