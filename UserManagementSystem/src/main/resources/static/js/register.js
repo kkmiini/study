@@ -1,6 +1,6 @@
 
-
-document.getElementById('joindate').value = new Date().toISOString().substring(0, 10);
+/* 入社日 設定 */
+document.getElementById('NYUUSYA_DATE').value = new Date().toISOString().substring(0, 10);
 
 /* 登録 button */
 document.getElementById('btn').addEventListener('click', clickButton);
@@ -18,7 +18,7 @@ function clickButton() {
 
 /* staff_code 確認 */
 function validateStaffCode() {
-    var staffcode = document.getElementById('staff_code').value;
+    var staffcode = document.getElementById('SYAIN_ID').value;
     // 正規式を使用して、「A-Z」、「a-z」、「0-9」の範囲にあることを確認するパターン
     var pattern = /^[A-Za-z0-9]+$/;
 
@@ -35,8 +35,8 @@ function validateStaffCode() {
 
 /* staff_lastname, staff_firstname 確認 */
 function validateStaffName() {
-    var stafflastname = document.getElementById('staff_lastname').value;	
-    var stafffirstname = document.getElementById('staff_firstname').value;	
+    var stafflastname = document.getElementById('FIRST_NAME_KANJI').value;	
+    var stafffirstname = document.getElementById('LAST_NAME_KANJI').value;	
     
     if (stafflastname === "" || stafffirstname === "") {
         alert("社員名を入力お願いします");
@@ -86,7 +86,7 @@ function validateAccountNum() {
 
 /* textarea 確認 */
 function validateTextArea() {
-    var textarea = document.getElementById('textarea').value;	
+    var textarea = document.getElementById('IT_BIKOU').value;	
     
     if (textarea.length >=1024) {
     	alert("備考及びご自分で己アピールをもう一度ご入力お願いします。 \n *1024文字以内でなければなりません。 ");
