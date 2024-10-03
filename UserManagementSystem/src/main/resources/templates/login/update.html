@@ -38,46 +38,46 @@
 <form>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 2em;">社員名（漢字)</label>
-		姓<input type="text" id="staff_lastname" name="lastname_id" style="margin: 0 14px 0 14px; width:8em;" />
-		名<input type="text" id="staff_firstname" name="firstname_id" style="margin: 0 25px 0 14px; width:8em;" />
+		姓<input type="text" id="FIRST_NAME_KANJI" name="FIRST_NAME_KANJI" style="margin: 0 14px 0 14px; width:8em;" />
+		名<input type="text" id="LAST_NAME_KANJI" name="LAST_NAME_KANJI" style="margin: 0 25px 0 14px; width:8em;" />
 		<label style="color:red;">必須</label>
 	</div>	
 	<div>
 		<label for="gender">性別 </label>
-		 <input type="radio" name="gender" value="male" style="margin: 0 5px 0 95px;"/>男
-		 <input type="radio" name="gender" value="female" style="margin-left: 20px;" />女
+		 <input type="radio" name="SEIBETU" value="1" style="margin: 0 5px 0 95px;"/>男
+		 <input type="radio" name="SEIBETU" value="2" style="margin-left: 20px;" />女
 	</div>
 	<p>会社関連情報</p>
 	<hr></hr>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 6em;">所属会社</label>
-		<select style="height:24px; ">
-			<option value="brightstar">株式会社ブライトスター</option>
-			<option value="topcloud">株式会社トップクラウド</option>
+		<select name="SYOZOKU_KAISYA" style="height:24px; ">
+			<option value="1">株式会社ブライトスター</option>
+			<option value="2">株式会社トップクラウド</option>
 		</select>
 	</div>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 7em;">入社日</label>
-		<input type="date" name="joindate" id="joindate" style="height:20px;"/>
+		<input type="date" name="NYUUSYA_DATE" id="NYUUSYA_DATE" style="height:20px;"/>
 	</div>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 7em;">退社日</label>
-		<input type="text" name="enddate" id="enddate" />※YYYY-MM-DD				
+		<input type="text" name="TAISYA_DATE" id="TAISYA_DATE" />※YYYY-MM-DD				
 	</div>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 6em;">職業種類 </label>
-		<select name="jobcategory" style="height:22px;">
-			<option value="executive">役員</option>
-			<option value="general_affairs">総務</option>
-			<option value="it_sales">IT営業</option>
-			<option value="it_engineer">ITエンジニア</option>
-			<option value="real_estate_staff">不動産スタッフ</option>
-			<option value="self_employed">個人事業主</option>		
+		<select name="SYOKUGYO_KIND" style="height:22px;">
+			<option value="1">役員</option>
+			<option value="2">総務</option>
+			<option value="3">IT営業</option>
+			<option value="4">ITエンジニア</option>
+			<option value="5">不動産スタッフ</option>
+			<option value="6">個人事業主</option>	
 		</select>
 	</div>
 </form>
 	<hr></hr>	
-<button type="button"><b>更　新</b></button>
+<button type="button" id="btn"><b>更　新</b></button>
 
 
 
@@ -90,5 +90,6 @@
 <script type="text/javascript" src="/js/jquery.dialog.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/js/update.js"></script>
 
 </html>
