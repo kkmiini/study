@@ -1,8 +1,10 @@
 package com.kyh.system.repository;
 
-import com.kyh.system.entity.Syain;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface SyainRepository extends JpaRepository<Syain, Integer> {
+import com.kyh.system.entity.SyainEntity;
+
+@Repository
+public interface SyainRepository extends JpaRepository<SyainEntity, Integer> {
 }
