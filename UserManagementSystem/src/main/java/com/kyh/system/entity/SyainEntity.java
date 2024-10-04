@@ -18,6 +18,7 @@ public class SyainEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "SYAIN_ID")
     private Integer syainId;
 	
 
@@ -191,22 +192,38 @@ public class SyainEntity {
 		this.itBikou = itBikou;
 	}
 
-
+	@Column(name = "FIRST_NAME_KANJI")
     private String firstNameKanji; 
+	@Column(name = "LAST_NAME_KANJI")
     private String lastNameKanji; 
+	@Column(name = "SEIBETU")
     private Integer seibetu; 
+	@Column(name = "SYOZOKU_KAISYA")
     private Integer syozokuKaisya; 
+	@Column(name = "NYUUSYA_DATE")
     private Date nyuusyaDate; 
+	@Column(name = "TAISYA_DATE")
     private Date taisyaDate; 
+	
+	@Column(name = "SYOKUGYO_KIND")
     private Integer syokugyoKind; 
+	@Column(name = "KINYUKIKAN_CODE")
     private String kinyukikanCode; 
+	@Column(name = "KINYUKIKAN_NAME")
     private String kinyukikanName; 
+	@Column(name = "SITEN_CODE")
     private String sitenCode; 
+	@Column(name = "SITEN_NAME")
     private String sitenName; 
+	@Column(name = "KOUZA_KIND")
     private Integer kouzaKind; 
+	@Column(name = "KOUZA_NUM")
 	private String kouzaNum; 
+	@Column(name = "MEIGI_NAME")
     private String meigiName; 
+	@Column(name = "IT_OS")
     private String itOs; 
+	@Column(name = "IT_BIKOU")
     private String itBikou; 
    
 	
@@ -226,7 +243,7 @@ public class SyainEntity {
 		 syainEntity.setKinyukikanName(syainDTO.getKinyukikanName());
 		 syainEntity.setSitenCode(syainDTO.getSitenCode());
 		 syainEntity.setSitenName(syainDTO.getSitenName());
-		 syainEntity.setKouzaKind(syainDTO.getKouzaKind());
+	//	 syainEntity.setKouzaKind(syainDTO.getKouzaKind());
 		 syainEntity.setKouzaNum(syainDTO.getKouzaNum());
 	    	
 		 syainEntity.setMeigiName(syainDTO.getMeigiName());

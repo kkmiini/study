@@ -1,6 +1,9 @@
 
 /* 入社日 設定 */
-document.getElementById('NYUUSYA_DATE').value = new Date().toISOString().substring(0, 10);
+document.getElementById('nyuusyaDate').value = new Date().toISOString().substring(0, 10);
+/* 退社日 設定 */
+document.getElementById('taisyaDate').value = new Date().toISOString().substring(0, 10);
+
 
 /* 登録 button */
 document.getElementById('btn').addEventListener('click', clickButton);
@@ -18,7 +21,7 @@ function clickButton() {
 
 /* staff_code 確認 */
 function validateStaffCode() {
-    var staffcode = document.getElementById('SYAIN_ID').value;
+    var staffcode = document.getElementById('syainId').value;
     // 正規式を使用して、「A-Z」、「a-z」、「0-9」の範囲にあることを確認するパターン
     var pattern = /^[A-Za-z0-9]+$/;
 
@@ -35,8 +38,8 @@ function validateStaffCode() {
 
 /* staff_lastname, staff_firstname 確認 */
 function validateStaffName() {
-    var stafflastname = document.getElementById('FIRST_NAME_KANJI').value;	
-    var stafffirstname = document.getElementById('LAST_NAME_KANJI').value;	
+    var stafflastname = document.getElementById('firstNameKanji').value;	
+    var stafffirstname = document.getElementById('lastNameKanji').value;	
     
     if (stafflastname === "" || stafffirstname === "") {
         alert("社員名を入力お願いします");
@@ -74,7 +77,7 @@ function validateBranchCode() {
 
 /* account_num 確認 */
 function validateAccountNum() {
-    var accountnum = document.getElementById('account_num').value;	
+    var accountnum = document.getElementById('kouzaNum').value;	
     
   if (accountnum.trim() === "" || isNaN(accountnum) ) {
         alert("口座番号の入力をお願いします。 \n *数字でなければなりません。");
@@ -86,7 +89,7 @@ function validateAccountNum() {
 
 /* textarea 確認 */
 function validateTextArea() {
-    var textarea = document.getElementById('IT_BIKOU').value;	
+    var textarea = document.getElementById('itBikou').value;	
     
     if (textarea.length >=1024) {
     	alert("備考及びご自分で己アピールをもう一度ご入力お願いします。 \n *1024文字以内でなければなりません。 ");
