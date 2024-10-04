@@ -20,22 +20,22 @@ public class SyainService {
 	@Autowired
     private SyainRepository syainRepository; 
 
- 
-
     public void save(SyainDTO syainDTO) {
-        // repsitory의 save 메서드 호출
+    	  /* DTO의 날짜 형식을 Date로 변환
+        if (syainDTO.getNyuusyaDate() != null) {
+            syainDTO.setNyuusyaDate(java.sql.Date.valueOf(syainDTO.getNyuusyaDate()));
+        }
+        if (syainDTO.getTaisyaDate() != null) {
+            syainDTO.setTaisyaDate(java.sql.Date.valueOf(syainDTO.getTaisyaDate()));
+        } */
+
+        // 엔티티 변환 및 저장
         SyainEntity syainEntity = SyainEntity.toSyainEntity(syainDTO);
-        
-       
-            
-        
-        
+    
         syainRepository.save(syainEntity);
         //Repository의 save메서드 호출 (조건. entity객체를 넘겨줘야 함)
 
     }
-    
-    
-    
-    
+
 }
+

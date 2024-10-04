@@ -2,6 +2,8 @@ package com.kyh.system.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import com.kyh.system.entity.SyainEntity;
 
 import lombok.Getter;
@@ -110,13 +112,7 @@ public class SyainDTO {
 		this.sitenName = sitenName;
 	}
 
-	public Integer getKouzaKind() {
-		return kouzaKind;
-	}
 
-	public void setKouzaKind(Integer kouzaKind) {
-		this.kouzaKind = kouzaKind;
-	}
 
 	public String getKouzaNum() {
 		return kouzaNum;
@@ -150,8 +146,11 @@ public class SyainDTO {
 		this.itBikou = itBikou;
 	}
 
+	@NotNull(message = "Syain ID는 필수입니다.")
 	private Integer syainId; 
+	@NotNull(message = "firstNameKanji는 필수입니다.")
     private String firstNameKanji; 
+	@NotNull(message = "lastNameKanji는 필수입니다.")
     private String lastNameKanji; 
     private Integer seibetu; 
     private Integer syozokuKaisya; 
@@ -162,7 +161,7 @@ public class SyainDTO {
     private String kinyukikanName; 
     private String sitenCode; 
     private String sitenName; 
-    private Integer kouzaKind; 
+
 	private String kouzaNum; 
     private String meigiName; 
     private String itOs; 
@@ -183,7 +182,7 @@ public class SyainDTO {
     	syainDTO.setKinyukikanName(syainEntity.getKinyukikanName());
     	syainDTO.setSitenCode(syainEntity.getSitenCode());
     	syainDTO.setSitenName(syainEntity.getSitenName());
-    	syainDTO.setKouzaKind(syainEntity.getKouzaKind());
+
     	syainDTO.setKouzaNum(syainEntity.getKouzaNum());
     	
     	syainDTO.setMeigiName(syainEntity.getMeigiName());
