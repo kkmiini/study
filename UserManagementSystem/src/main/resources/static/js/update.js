@@ -8,7 +8,7 @@ document.getElementById('taisyaDate').value = new Date().toISOString().substring
 document.getElementById('btn').addEventListener('click', clickButton);
 
 function clickButton() {
- alert("ok");
+ 
 	
 }
 

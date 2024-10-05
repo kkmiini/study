@@ -25,22 +25,22 @@
     <div class="search">
         <div>
             <label style="margin:0px 15px 0px 0px;">所属会社 </label>
-            <select name="company" style="height: 30px; width:15em;">
-                <option value="all" selected="selected">全て</option>			
-                <option value="brightstar">株式会社ブライトスター</option>
-                <option value="topcloud">株式会社トップクラウド</option>
+            <select name="syozokuKaisya" style="height: 30px; width:15em;">
+                <option value="1" selected="selected">全て</option>			
+                <option value="2">株式会社ブライトスター</option>
+                <option value="3">株式会社トップクラウド</option>
             </select>
             <label style="margin:0px 15px 0px 100px;">社員名 </label>
-            <input type="text" id="name" style="height: 24px; width:15em;"/>
+            <input type="text" id="name" name="lastNameKanji" style="height: 24px; width:15em;"/>
         </div>
         <div style="margin:30px 0px;">
             <label style="margin:0px 15px 0px 0px;">職業種類 </label>
-            <select style="height: 30px; width:15em;">
-                <option value="executive">役員</option>
-                <option value="general_affairs">総務</option>
-                <option value="it_sales">IT営業</option>
-                <option value="it_engineer" selected="selected">ITエンジニア</option>
-                <option value="real_estate_staff">不動産スタッフ</option>	
+            <select name="syokugyoKind" style="height: 30px; width:15em;">
+                <option value="1">役員</option>
+                <option value="2">総務</option>
+                <option value="3">IT営業</option>
+                <option value="4" selected="selected">ITエンジニア</option>
+                <option value="5">不動産スタッフ</option>	
             </select>
             <label for="employment" style="margin:0px 15px 0px 100px;">在職</label>
             <input type="checkbox" id="employment" name="employment" />
@@ -66,13 +66,13 @@
             <th>退社日</th>
             <th style="width:12%;">編集</th>		
         </tr>
-        <tr th:each="syain : ${syainList}">
+        <tr th:each="syain : ${syain}">
             <td>（株）ブライトスター</td>
-            <td th:text="${syain.FIRST_NAME_KANJI} + ' ' + ${syain.LAST_NAME_KANJI}"></td>
-            <td th:text="${syain.SEIBETU == 1 ? '男' : '女'}"></td>
-            <td th:text="${syain.SYOKUGYO_KIND == 1 ? 'ITエンジニア' : 'その他'}"></td>
-            <td th:text="${#dates.format(syain.NYUUSYA_DATE, 'yyyy/MM/dd')}"></td>
-            <td th:text="${#dates.format(syain.TAISYA_DATE, 'yyyy/MM/dd')}"></td>
+            <td th:text="${syain.firstNameKanji} + ' ' + ${syain.lastNameKanji}"></td>
+            <td th:text="${syain.seibetu == 1 ? '男' : '女'}"></td>
+            <td th:text="${syain.syokugyoKind == 1 ? 'ITエンジニア' : 'その他'}"></td>
+            <td th:text="${#dates.format(syain.nyuusyaDate, 'yyyy/MM/dd')}"></td>
+            <td th:text="${#dates.format(syain.taisyaDate, 'yyyy/MM/dd')}"></td>
             <td style="text-align:left; color:blue;">更新 削除</td>		
         </tr>		
     </table>
