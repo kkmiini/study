@@ -2,18 +2,19 @@ package com.kyh.system.controller;
 
 
 import com.kyh.system.entity.Syain;
-
+import com.kyh.system.mapper.SyainMapper;
 import com.kyh.system.service.SyainService;
 
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,6 +50,39 @@ public class SyainController {
 	    return model;
 	}
 	
+	/* @PostMapping("/syain/register")
+	@ResponseBody
+    public String registerSyain(Syain syain, Model model) {
+        int result = syainService.addSyain(syain);
+
+        if (result == 1) {
+            model.addAttribute("message", "登録が成功しました。");
+        } else {
+            model.addAttribute("message", "登録に失敗しました。");
+        }
+        
+        return "register_result";  // 결과 페이지로 이동
+    } */
+	
+	@RequestMapping("/syain/management")
+	public String list(Model model) {
+
+		List<Syain> list = syainService.list();
+		model.addAttribute("item", list);
+		
+		/*for (Syain syain : list) {
+		    System.out.println("ID: " + syain.getSyainId() + ", 이름: " + syain.getFirstNameKanji() + " " + syain.getLastNameKanji());
+		} */
+		return "/login/management";
+	}
+	
+	
+	
+	
+    }
+	
+	
+	
 	
    /* @RequestMapping(value = "myInfo", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView myInfo(HttpSession session) {
@@ -66,7 +100,7 @@ public class SyainController {
 	
 	
 	
-}	
+
 
   /*  @GetMapping("/syain/register")
     public String saveForm(Model model) {

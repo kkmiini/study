@@ -66,13 +66,13 @@
             <th>退社日</th>
             <th style="width:12%;">編集</th>		
         </tr>
-        <tr th:each="syain : ${syain}">
+        <tr th:each="item : ${item}">
             <td>（株）ブライトスター</td>
-            <td th:text="${syain.firstNameKanji} + ' ' + ${syain.lastNameKanji}"></td>
-            <td th:text="${syain.seibetu == 1 ? '男' : '女'}"></td>
-            <td th:text="${syain.syokugyoKind == 1 ? 'ITエンジニア' : 'その他'}"></td>
-            <td th:text="${#dates.format(syain.nyuusyaDate, 'yyyy/MM/dd')}"></td>
-            <td th:text="${#dates.format(syain.taisyaDate, 'yyyy/MM/dd')}"></td>
+            <td th:text="${item.firstNameKanji} + ' ' + ${item.lastNameKanji}"></td>
+            <td th:text="${item.seibetu == 1 ? '男' : '女'}"></td>
+            <td th:text="${item.syokugyoKind == 1 ? 'ITエンジニア' : 'その他'}"></td>
+            <td th:text="${item.nyuusyaDate != null ? #dates.format(item.nyuusyaDate, 'yyyy/MM/dd') : 'N/A'}"></td>
+            <td th:text="${item.taisyaDate != null ? #dates.format(item.taisyaDate, 'yyyy/MM/dd') : 'N/A'}"></td>
             <td style="text-align:left; color:blue;">更新 削除</td>		
         </tr>		
     </table>
