@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -76,7 +77,21 @@ public class SyainController {
 		return "/login/management";
 	}
 	
-	
+	@GetMapping("/modify")
+	public String updatePage(@RequestParam String firstNameKanji, @RequestParam String lastNameKanji,
+			@RequestParam String seibetu, @RequestParam String syokugyoKind, @RequestParam String nyuusyaDate, @RequestParam String taisyaDate, Model model) {
+		Syain info = new Syain();
+		info.setFirstNameKanji(firstNameKanji); 
+		info.setLastNameKanji(lastNameKanji);
+		info.setSeibetu(null);
+		info.setSyokugyoKind(null);
+		info.setNyuusyaDate(null);
+		info.setTaisyaDate(null);
+		
+		 model.addAttribute("info", info);  
+	    
+	    return "/login/update";  // 업데이트 페이지로 이동
+	}
 	
 	
     }
@@ -84,58 +99,7 @@ public class SyainController {
 	
 	
 	
-   /* @RequestMapping(value = "myInfo", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView myInfo(HttpSession session) {
-        ModelAndView model = new ModelAndView();
-        Syain syain = (Syain) session.getAttribute("syain");
-        String name = syain.getLastNameKanji();
-        syain.setLastNameKanji(name);
-        Syain logSyain = syainService.getUserByName(syain);
-        session.setAttribute("syain", logSyain);
-        model.addObject("syain", logSyain);
-        model.setViewName("/login/management");
-        return model;
-    } */
-	
-	
-	
-	
 
-
-  /*  @GetMapping("/syain/register")
-    public String saveForm(Model model) {
-        model.addAttribute("syainDTO", new SyainDTO());
-        return "/login/register"; 
-    }
-
-    @PostMapping("/syain/register")
-    public String save(@Valid @ModelAttribute("syainDTO") SyainDTO syainDTO, 
-                       BindingResult bindingResult, 
-                       Model model) {
-        // 유효성 검사 결과 확인
-        if (bindingResult.hasErrors()) {
-            // 유효성 검사에 실패한 경우
-            return "/login/register"; 
-        }
-
-        // 유효성 검사 통과 시 저장 처리
-        syainService.save(syainDTO);
-        
-        return "redirect:/syain/register"; // 성공적으로 저장 후 리다이렉트
-    }
-
-
-
-	
-
-	
-   public String save(@RequestParam("SYAIN_ID") Integer SYAIN_ID,
-                       @RequestParam("FIRST_NAME_KANJI") String FIRST_NAME_KANJI,
-                       @RequestParam("LAST_NAME_KANJI") String LAST_NAME_KANJI) {
-        System.out.println("SyainController.save");
-        System.out.println("SYAIN_ID = " + SYAIN_ID + ", FIRST_NAME_KANJI = " + FIRST_NAME_KANJI + ", LAST_NAME_KANJI = " + LAST_NAME_KANJI);
-        return "/login/register";
-    } */
     
 
     

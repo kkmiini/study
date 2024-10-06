@@ -73,7 +73,14 @@
             <td th:text="${item.syokugyoKind == 1 ? 'ITエンジニア' : 'その他'}"></td>
             <td th:text="${item.nyuusyaDate != null ? #dates.format(item.nyuusyaDate, 'yyyy/MM/dd') : 'N/A'}"></td>
             <td th:text="${item.taisyaDate != null ? #dates.format(item.taisyaDate, 'yyyy/MM/dd') : 'N/A'}"></td>
-            <td style="text-align:left; color:blue;">更新 削除</td>		
+            <td style="text-align:left; color:blue;">
+            	<a th:href="@{/modify(firstNameKanji=${item.firstNameKanji}, lastNameKanji=${item.lastNameKanji}, 
+            	seibetu=${item.seibetu == 1 ? '男' : '女'}, 
+            	syokugyoKind=${item.syokugyoKind == 1 ? 'ITエンジニア' : 'その他'}, 
+            	nyuusyaDate=${item.nyuusyaDate != null ? #dates.format(item.nyuusyaDate, 'yyyy/MM/dd') : 'N/A'}, 
+            	taisyaDate=${item.taisyaDate != null ? #dates.format(item.taisyaDate, 'yyyy/MM/dd') : 'N/A'})}">更新</a> 
+            	<a>削除</a>
+            </td>		
         </tr>		
     </table>
 </div>
