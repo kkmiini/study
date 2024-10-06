@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kyh.system.mapper.SyainMapper">
-  
+<mapper namespace="com.kyh.system.mapper.SyainMapper"> 
+  <!-- "com.kyh.system.mapper.SyainMapper" -->
   <resultMap id="BaseResultMap" type="com.kyh.system.entity.Syain">
     <id column="SYAIN_ID" jdbcType="INTEGER" property="syainId" />
     <result column="FIRST_NAME_KANJI" jdbcType="VARCHAR" property="firstNameKanji" />
@@ -32,5 +32,20 @@
     from SYAIN_MAIN
     where LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR
   </select>
- 
+  
+   <insert id="insert" parameterType="com.kyh.system.entity.Syain">
+    insert into SYAIN_MAIN 
+     (SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI)
+    values (#{syainId,jdbcType=INTEGER}, #{firstNameKanji,jdbcType=VARCHAR}, #{lastNameKanji,jdbcType=VARCHAR} )
+  </insert>
+  
+  <select id="selectList" resultMap="BaseResultMap">
+ 	 select 
+ 	 <include refid="Base_Column_List" />
+    from SYAIN_MAIN
+    </select>
+ 	
+ 	
+ 	
+ 	
 </mapper>

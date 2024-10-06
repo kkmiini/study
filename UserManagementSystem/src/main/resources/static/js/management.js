@@ -1,4 +1,10 @@
-$(document).ready(function() {
+document.getElementById('btn').addEventListener('click', function() {
+      // /syain/management 경로로 이동
+      window.location.href = '/syain/management';
+  });
+
+
+/*  $(document).ready(function() {
     $('#btn').click(function() {
         // 검색 조건 데이터 가져오기
         var company = $('select[name="syozokuKaisya"]').val();  // 'syozokuKaisya'로 수정
@@ -42,4 +48,4 @@ $(document).ready(function() {
             }
         });
     });
-});
+}); */
