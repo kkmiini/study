@@ -38,8 +38,8 @@
 <form>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 2em;">社員名（漢字)</label>
-		姓<input type="text" id="FIRST_NAME_KANJI" name="FIRST_NAME_KANJI" style="margin: 0 14px 0 14px; width:8em;" />
-		名<input type="text" id="LAST_NAME_KANJI" name="LAST_NAME_KANJI" style="margin: 0 25px 0 14px; width:8em;" />
+		姓<input type="text" id="firstNameKanj" name="firstNameKanj" style="margin: 0 14px 0 14px; width:8em;" th:value="${info.firstNameKanji}" />
+		名<input type="text" id="lastNameKanji" name="lastNameKanji" style="margin: 0 25px 0 14px; width:8em;" th:value="${info.lastNameKanji}"/>
 		<label style="color:red;">必須</label>
 	</div>	
 	<div>
