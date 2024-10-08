@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+<form action="/syain/management" method="get">
 <div class="container">
     <div style="text-align:left; font-size:20px;"><b>株式会社ブライトスター</b></div>
     <div style="text-align:center; font-size:40px;"><b>社内統合管理システム</b></div>
@@ -31,7 +32,7 @@
                 <option value="3">株式会社トップクラウド</option>
             </select>
             <label style="margin:0px 15px 0px 100px;">社員名 </label>
-            <input type="text" id="name" name="lastNameKanji" style="height: 24px; width:15em;"/>
+            <input type="text" id="lastNameKanji" name="lastNameKanji" style="height: 24px; width:15em;"/>
         </div>
         <div style="margin:30px 0px;">
             <label style="margin:0px 15px 0px 0px;">職業種類 </label>
@@ -48,7 +49,8 @@
             <input type="checkbox" id="unemployed" name="unemployed" />
         </div>
     </div>
-    <button type="button" id="btn"><b>検 索</b></button>
+    <button type="submit" id="btn"><b>検 索</b></button>
+   
 
     <p style="margin:30px 0px 15px 0px;">■社員一覧</p>
     <div style="width:50%; text-align:right; font-size:15px;" >
@@ -84,6 +86,7 @@
         </tr>		
     </table>
 </div>
+ </form>
 </body>
-<script type="text/javascript" src="/js/management.js"></script>
+<!--  <script type="text/javascript" src="/js/management.js"></script> -->
 </html>

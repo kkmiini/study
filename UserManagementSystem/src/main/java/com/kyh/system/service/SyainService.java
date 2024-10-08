@@ -14,4 +14,8 @@ public interface SyainService {
 	int addSyain(Syain syain);
 	
 	public List<Syain> list();
+
+	public List<Syain> listByLastNameKanji(String lastNameKanji);
+
+	
 }

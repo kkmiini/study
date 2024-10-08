@@ -11,6 +11,10 @@ public interface SyainMapper {
 	int insert(Syain record);
 
 	 List<Syain> selectList();
+
+	List<Syain> listByLastNameKanji();
+
+	List<Syain> listByLastNameKanji(String lastNameKanji);
 	
 
 }
