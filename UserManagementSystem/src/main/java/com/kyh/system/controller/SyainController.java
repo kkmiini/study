@@ -8,6 +8,7 @@ import com.kyh.system.service.SyainService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,44 +27,54 @@ public class SyainController {
 	@Autowired
     private SyainService syainService;
 	
-	@RequestMapping(value = "myInfo", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView myInfo(@RequestParam("lastNameKanji") String lastNameKanji,
-	                           @RequestParam("taisyaDate") LocalDateTime taisyaDate,
-	                           @RequestParam("nyuusyaDate") LocalDateTime nyuusyaDate,
-	                           @RequestParam("seibetu") boolean seibetu,
-	                           @RequestParam("syokugyoKind") boolean syokugyoKind,
-	                           HttpSession session) {
-	    ModelAndView model = new ModelAndView();
-
-	    // 세션에서 사용자 정보 가져오기
-	    Syain syain = (Syain) session.getAttribute("syain");
-
-	    // 받은 데이터를 기반으로 Syain 정보 처리 (예: 데이터베이스 조회 등)
-	    Syain logSyain = syainService.getUserByName(syain);
-	    session.setAttribute("syain", logSyain);
-	    
-	    // 결과 데이터를 모델에 추가
-	    model.addObject("syain", logSyain);
-	    
-	    // Ajax 요청에 대한 응답 (HTML로 반환할 수 있음)
-	    model.setViewName("/login/management");
-	    return model;
+	@RequestMapping("/syain/register")
+	public String register(
+			@RequestParam Integer syainId,
+			@RequestParam String firstNameKanji,
+			@RequestParam String lastNameKanji,
+			@RequestParam Integer seibetu,
+			@RequestParam Integer syozokuKaisya,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date nyuusyaDate,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date taisyaDate,
+			@RequestParam Integer syokugyoKind,
+			@RequestParam String kinyukikanCode,
+			@RequestParam(required = false) String kinyukikanName,
+			@RequestParam String sitenCode,
+			@RequestParam(required = false) String sitenName,
+			@RequestParam(required = false) Integer kouzaKind,
+			@RequestParam String kouzaNum,
+			@RequestParam String meigiName,
+			@RequestParam(required = false) String itOs,
+			@RequestParam String itBikou,
+			Model model) {
+		
+		Syain syain = new Syain();
+		syain.setSyainId(syainId);
+		syain.setFirstNameKanji(firstNameKanji);
+		syain.setLastNameKanji(lastNameKanji);
+		syain.setSeibetu(seibetu);
+		syain.setSyozokuKaisya(syozokuKaisya);
+		
+		syain.setNyuusyaDate(nyuusyaDate);
+		syain.setTaisyaDate(taisyaDate);
+		syain.setSyokugyoKind(syokugyoKind);
+		syain.setKinyukikanCode(kinyukikanCode);
+		syain.setKinyukikanName(kinyukikanName);
+		syain.setSitenCode(sitenCode);
+		syain.setSitenName(sitenName);
+		syain.setKouzaKind(kouzaKind);
+		syain.setKouzaNum(kouzaNum);
+		syain.setMeigiName(meigiName);
+		syain.setItOs(itOs);
+		syain.setItBikou(itBikou);
+		
+		model.addAttribute("person", syain);
+		
+		
+		int list = syainService.register(syain);
+		
+		return "/login/register";
 	}
-	
-	/* @PostMapping("/syain/register")
-	@ResponseBody
-    public String registerSyain(Syain syain, Model model) {
-        int result = syainService.addSyain(syain);
-
-        if (result == 1) {
-            model.addAttribute("message", "登録が成功しました。");
-        } else {
-            model.addAttribute("message", "登録に失敗しました。");
-        }
-        
-        return "register_result";  // 결과 페이지로 이동
-    } */
 	
 	@RequestMapping("/syain/management")
 	public String list(@RequestParam String lastNameKanji, Model model) {
@@ -77,6 +88,7 @@ public class SyainController {
 
 	    return "/login/management";   
 	}
+	
 	
 	@GetMapping("/modify")
 	public String updatePage(@RequestParam String firstNameKanji, @RequestParam String lastNameKanji,
