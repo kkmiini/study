@@ -43,7 +43,15 @@
  	 select 
  	 <include refid="Base_Column_List" />
     from SYAIN_MAIN
-    </select>
+     </select>
+     
+  <select id="listByLastNameKanji" resultMap="BaseResultMap">
+ 	 select 
+ 	 *
+ 	 <!--   <include refid="Base_Column_List" /> -->
+    from SYAIN_MAIN
+	where LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR} 
+  </select>     
  	
  	
  	

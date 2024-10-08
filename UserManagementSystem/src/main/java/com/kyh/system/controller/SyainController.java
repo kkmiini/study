@@ -66,15 +66,16 @@ public class SyainController {
     } */
 	
 	@RequestMapping("/syain/management")
-	public String list(Model model) {
+	public String list(@RequestParam String lastNameKanji, Model model) {
+	    System.out.println("입력된 lastNameKanji: " + lastNameKanji); // 값 확인
 
-		List<Syain> list = syainService.list();
-		model.addAttribute("item", list);
-		
-		/*for (Syain syain : list) {
-		    System.out.println("ID: " + syain.getSyainId() + ", 이름: " + syain.getFirstNameKanji() + " " + syain.getLastNameKanji());
-		} */
-		return "/login/management";
+	    // 입력받은 lastNameKanji를 기반으로 검색
+	    List<Syain> list = syainService.listByLastNameKanji(lastNameKanji);
+	    
+	    // 모델에 검색 결과 추가
+	    model.addAttribute("item", list);  
+
+	    return "/login/management";   
 	}
 	
 	@GetMapping("/modify")

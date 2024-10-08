@@ -1,7 +1,17 @@
-document.getElementById('btn').addEventListener('click', function() {
-      // /syain/management 경로로 이동
-      window.location.href = '/syain/management';
-  });
+ document.getElementById('btn').addEventListener('click', function() {
+            var lastNameKanji = document.getElementById('lastNameKanji').value;
+
+            // 값이 비어있으면 경고창 표시
+            if (!lastNameKanji) {
+                alert("社員名を入力してください。");
+                return;
+            }
+
+            // URL 이동
+            var url = '/syain/management?lastNameKanji=' + encodeURIComponent(lastNameKanji);
+            console.log("Redirecting to: ", url); // URL 확인을 위한 로그 출력
+            window.location.href = url;
+        });
 
 
 /*  $(document).ready(function() {

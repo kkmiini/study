@@ -43,9 +43,9 @@
 		<label style="color:red;">必須</label>
 	</div>	
 	<div>
-		<label for="gender">性別 </label>
-		 <input type="radio" name="SEIBETU" value="1" style="margin: 0 5px 0 95px;"/>男
-		 <input type="radio" name="SEIBETU" value="2" style="margin-left: 20px;" />女
+	    <label for="gender">性別 </label>
+	    <input type="radio" name="seibetu" value="1" style="margin: 0 5px 0 95px;" th:checked="${info.seibetu == '男'}"/>男
+	    <input type="radio" name="seibetu" value="2" style="margin-left: 20px;" th:checked="${info.seibetu == '女'}"/>女
 	</div>
 	<p>会社関連情報</p>
 	<hr></hr>
