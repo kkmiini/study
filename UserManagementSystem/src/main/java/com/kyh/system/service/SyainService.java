@@ -9,13 +9,15 @@ import com.kyh.system.entity.Syain;
 
 public interface SyainService {
 	
-	public  Syain getUserByName(Syain syain);
+	//public  Syain getUserByName(Syain syain);
 	
-	int addSyain(Syain syain);
+	//int addSyain(Syain syain);
 	
-	public List<Syain> list();
+	//public List<Syain> list();
 
 	public List<Syain> listByLastNameKanji(String lastNameKanji);
+
+	public int register(Syain syain);
 
 	
 }

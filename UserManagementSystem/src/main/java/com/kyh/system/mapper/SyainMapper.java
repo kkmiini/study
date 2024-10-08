@@ -15,6 +15,8 @@ public interface SyainMapper {
 	List<Syain> listByLastNameKanji();
 
 	List<Syain> listByLastNameKanji(String lastNameKanji);
+
+	int register(Syain syain);
 	
 
 }

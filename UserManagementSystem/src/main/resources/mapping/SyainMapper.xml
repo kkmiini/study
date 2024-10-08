@@ -52,7 +52,14 @@
     from SYAIN_MAIN
 	where LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR} 
   </select>     
- 	
+  
+  <insert id="register" parameterType="com.kyh.system.entity.Syain">
+	  insert into SYAIN_MAIN 
+     (SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI)
+	  values (#{syainId,}, #{firstNameKanji}, #{lastNameKanji} )
+  </insert>
+  
+  
  	
  	
  	

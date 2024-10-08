@@ -37,14 +37,14 @@
 
 	<p style="margin-top:10px;">基本情報</p>
 	<hr></hr>
-<form action="/syain/register" method="POST">
+<form action="/syain/register" method="GET">
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 5em;">社員コード:</label>
 		<input type="text" id="syainId" name="syainId" style="margin: 0 25px 0 0; width:8em; width:8em;"/>必須
 	</div>
 	<div style="margin-bottom: 15px;">
 		<label style="margin-right: 2em;">社員名（漢字)</label>
-		姓<input type="text" id="firstNameKanji" name="firstNameKanji;" style="margin: 0 14px 0 14px; width:8em;" />
+		姓<input type="text" id="firstNameKanji" name="firstNameKanji" style="margin: 0 14px 0 14px; width:8em;" />
 		名<input type="text" id="lastNameKanji" name="lastNameKanji" style="margin: 0 25px 0 14px; width:8em;" />必須
 	</div>	
 	<div>
@@ -112,7 +112,7 @@
                 </span>
             </span>
         </td>
-        <td><span id="branch_name2" name="sitenName"></span></td>
+        <td><span id="branch_name2" ></span></td> <!-- name="sitenName" -->
         <td>普通</td>
         <td><input type="text" id="kouzaNum" name="kouzaNum" style="border:none;" /></td>
         <td><input type="text" id="meigiName" name="meigiName" style="border:none;" /></td>
