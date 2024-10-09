@@ -46,17 +46,21 @@ public class SyainServiceImpl implements SyainService {
 		return syainMapper.selectList();
 	}  */
 
-	@Override
-	public List<Syain> listByLastNameKanji(String lastNameKanji) {
-		// TODO Auto-generated method stub
-		return syainMapper.listByLastNameKanji(lastNameKanji);
-	}
+
 
 	@Override
 	public int register(Syain syain) {
 		// TODO Auto-generated method stub
 		return syainMapper.register(syain);
 	}
+
+	@Override
+	public List<Syain> listByinfo(String lastNameKanji, String syozokuKaisya, String syokugyoKind) {
+		// TODO Auto-generated method stub
+		return syainMapper.listByinfo(lastNameKanji, syozokuKaisya, syokugyoKind);
+	}
+
+
 
 
 
