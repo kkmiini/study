@@ -22,11 +22,11 @@
     <result column="IT_BIKOU" jdbcType="VARCHAR" property="itBikou" />       
   </resultMap>
   <sql id="Base_Column_List">
-    SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND,
+    SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, `NYUUSYA_DATE`, `TAISYA_DATE`, SYOKUGYO_KIND,
     KINYUKIKAN_CODE, KINYUKIKAN_NAME, SITEN_CODE, SITEN_NAME, KOUZA_KIND, KOUZA_NUM, MEIGI_NAME, IT_OS, IT_BIKOU
     </sql>
     
-  <select id="select" parameterType="com.kyh.system.entity.Syain" resultMap="BaseResultMap">
+  <!--  <select id="select" parameterType="com.kyh.system.entity.Syain" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from SYAIN_MAIN
@@ -44,19 +44,25 @@
  	 <include refid="Base_Column_List" />
     from SYAIN_MAIN
      </select>
+     -->
      
-  <select id="listByLastNameKanji" resultMap="BaseResultMap">
+  <select id="listByinfo" resultMap="BaseResultMap">
  	 select 
  	 *
- 	 <!--   <include refid="Base_Column_List" /> -->
     from SYAIN_MAIN
-	where LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR} 
+	WHERE LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR}
+	and SYOZOKU_KAISYA = #{syozokuKaisya,jdbcType=INTEGER}
+	and SYOKUGYO_KIND = #{syokugyoKind,jdbcType=INTEGER} 
   </select>     
   
   <insert id="register" parameterType="com.kyh.system.entity.Syain">
 	  insert into SYAIN_MAIN 
-     (SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI)
-	  values (#{syainId,}, #{firstNameKanji}, #{lastNameKanji} )
+     ( SYAIN_ID, FIRST_NAME_KANJI, LAST_NAME_KANJI, SEIBETU, SYOZOKU_KAISYA, 
+  NYUUSYA_DATE, TAISYA_DATE, SYOKUGYO_KIND, KINYUKIKAN_CODE, KINYUKIKAN_NAME, 
+  SITEN_CODE, SITEN_NAME, KOUZA_KIND, KOUZA_NUM, MEIGI_NAME, IT_OS, IT_BIKOU
+) 
+	  values (#{syainId}, #{firstNameKanji}, #{lastNameKanji}, #{seibetu}, #{syozokuKaisya}, #{nyuusyaDate}, #{taisyaDate}, #{syokugyoKind}, #{kinyukikanCode}, #{kinyukikanName}, #{sitenCode}, 
+	  #{sitenName}, #{kouzaKind}, #{kouzaNum}, #{meigiName}, #{itOs}, #{itBikou} )
   </insert>
   
   

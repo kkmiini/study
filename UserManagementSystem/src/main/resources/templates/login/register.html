@@ -1,278 +1,321 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      xmlns:float="http://www.w3.org/1999/xhtml">
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8"></meta>
- <!--    <link rel="stylesheet" href="/css/base.css" />
+<meta charset="utf-8"></meta>
+<!--    <link rel="stylesheet" href="/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/css/jquery.dialog.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css"/>
     <link rel="stylesheet" type="text/css" href="/easyui/themes/default/easyui.css"/>
-    <link rel="stylesheet" href="/css/register.css" /> --> 
+    <link rel="stylesheet" href="/css/register.css" /> -->
 
-	<link rel="stylesheet" href="css/bank_auto.css" />
-	<script src="https://zipaddr.github.io/bankauto0.js" charset="UTF-8"></script>
- 	<style>
- 		table, th, tr, td { border : 1px solid black; border-collapse: collapse; font-weight:normal; font-size:15px}
-  		.container { margin: 20px 80px 0 80px; font-size:15px;}		
-		.title { height:40px; background:linear-gradient(gray,white,gray); border-radius:5px; text-align : left; line-height : 40px; font-size:20px;}
- 		hr { text-align:left; margin-left:0; background:skyblue; height:2px; width: 98%; border:0; }
- 		p {margin: 30px 0 10px 0; font-size:20px;}
- 		.skill select {appearance:none; border:none; height:100%; width:100%; font-size:15px; text-align:center;}
- 		button {margin:30px 50% 30px 50%; height:30px; width:5em; background:linear-gradient(skyblue,white,skyblue); border-radius:5px; border:none; font-size:20px; cursor:pointer;}
- 		button:active { box-shadow: 1px 1px 0 rgb(0,0,0,0.5); position: relative; top:2px;}
- 		
+<link rel="stylesheet" href="css/bank_auto.css" />
+<script src="https://zipaddr.github.io/bankauto0.js" charset="UTF-8"></script>
+<style>
+table, th, tr, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-weight: normal;
+	font-size: 15px
+}
 
- 	</style>
+.container {
+	margin: 20px 80px 0 80px;
+	font-size: 15px;
+}
+
+.title {
+	height: 40px;
+	background: linear-gradient(gray, white, gray);
+	border-radius: 5px;
+	text-align: left;
+	line-height: 40px;
+	font-size: 20px;
+}
+
+hr {
+	text-align: left;
+	margin-left: 0;
+	background: skyblue;
+	height: 2px;
+	width: 98%;
+	border: 0;
+}
+
+p {
+	margin: 30px 0 10px 0;
+	font-size: 20px;
+}
+
+.skill select {
+	appearance: none;
+	border: none;
+	height: 100%;
+	width: 100%;
+	font-size: 15px;
+	text-align: center;
+}
+
+button {
+	margin: 30px 50% 30px 50%;
+	height: 30px;
+	width: 5em;
+	background: linear-gradient(skyblue, white, skyblue);
+	border-radius: 5px;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+button:active {
+	box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+	position: relative;
+	top: 2px;
+}
+</style>
 
 </head>
 
 <body>
-<div class="container">
-<div style="text-align:left; font-size:20px;"><b>株式会社ブライトスター</b></div>
-	<div style="text-align:center; font-size:40px;"><b>社内統合管理システム</b></div>
-	<div style="margin:0 0 15px 0; font-size:12px">BRIGHT STAR CO.LTD.</div>
-<div class="title"><b>■ 社員登録</b></div>
+	<div class="container">
+		<div style="text-align: left; font-size: 20px;">
+			<b>株式会社ブライトスター</b>
+		</div>
+		<div style="text-align: center; font-size: 40px;">
+			<b>社内統合管理システム</b>
+		</div>
+		<div style="margin: 0 0 15px 0; font-size: 12px">BRIGHT STAR
+			CO.LTD.</div>
+		<div class="title">
+			<b>■ 社員登録</b>
+		</div>
 
-	<p style="margin-top:10px;">基本情報</p>
-	<hr></hr>
-<form action="/syain/register" method="GET">
-	<div style="margin-bottom: 15px;">
-		<label style="margin-right: 5em;">社員コード:</label>
-		<input type="text" id="syainId" name="syainId" style="margin: 0 25px 0 0; width:8em; width:8em;"/>必須
-	</div>
-	<div style="margin-bottom: 15px;">
-		<label style="margin-right: 2em;">社員名（漢字)</label>
-		姓<input type="text" id="firstNameKanji" name="firstNameKanji" style="margin: 0 14px 0 14px; width:8em;" />
-		名<input type="text" id="lastNameKanji" name="lastNameKanji" style="margin: 0 25px 0 14px; width:8em;" />必須
-	</div>	
-	<div>
-		<label for="seibetu">性別 </label>
-		 <input type="radio" name="seibetu" value="1" style="margin: 0 5px 0 95px;"/>男
-		 <input type="radio" name="seibetu" value="2" style="margin-left: 20px;" />女
-	</div>
-	<p>会社関連情報</p>
-	<hr></hr>
-	<div style="margin-bottom: 15px;">
-		<label style="margin-right: 6em;">所属会社</label>
-		<select name="syozokuKaisya" style="height:24px; ">
-			<option value="1" >株式会社ブライトスター</option>
-			<option value="2">株式会社トップクラウド</option>
-		</select>
-	</div>
-	<div style="margin-bottom: 15px;">
-		<label style="margin-right: 7em;">入社日</label>
-		<input type="date" name="nyuusyaDate" id="nyuusyaDate" style="height:20px;"/>
-	</div>
-	<div style="margin-bottom: 15px;">
-		<label style="margin-right: 7em;">退社日</label>
-		<input type="date" name="taisyaDate" id="taisyaDate" style="height:20px;"/>	
-	</div>
-	<div style="margin-bottom: 15px;">
-		<label style="margin-right: 6em;">職業種類 </label>
-		<select name="syokugyoKind" style="height:22px;">
-			<option value="1">役員</option>
-			<option value="2">総務</option>
-			<option value="3">IT営業</option>
-			<option value="4">ITエンジニア</option>
-			<option value="5">不動産スタッフ</option>
-			<option value="6">個人事業主</option>		
-		</select>
-	</div>
-	
-	<p>給与関連情報</p>
-	<hr></hr>
-	<table>
-		<caption style="text-align:left;">給与振込口座</caption>
-		<tr style="background-color: skyblue; text-align:left;">
-			<th>金融機関コード</th>
-			<th style="width:200px;">金融機関名</th>
-			<th>支店名コード</th>
-			<th style="width:200px;">支店名</th>
-			<th style="width:100px;">口座種類</th>
-			<th>口座番号</th>
-			<th>名義人</th>			
-		</tr>
-	 <tr>
-        <td class="tbr_01">
-            <span class="bnk_area">
-                <input type="text" name="kinyukikanCode" id="bank_code2" class="form_txt-short" placeholder="例：0001" style="position: relative; border:none;" />
-                <span id="bank_code2_clear" class="bnk_class" style="display:none;">
-                    <font style="vertical-align: inherit;"></font>
-                </span>
-            </span>
-        </td>
-        <td><span id="bank_name2" name="kinyukikanName"></span></td>
-        <td class="tbr_01">
-            <span class="bnk_area">
-                <input type="text" name="sitenCode" id="branch_code2" class="form_txt-short" placeholder="例：310" style="position: relative; border:none;" />
-                <span id="branch_code2_clear" class="bnk_clear" style="display:none;">
-                    <font style="vertical-align: inherit;"></font>
-                </span>
-            </span>
-        </td>
-        <td><span id="branch_name2" ></span></td> <!-- name="sitenName" -->
-        <td>普通</td>
-        <td><input type="text" id="kouzaNum" name="kouzaNum" style="border:none;" /></td>
-        <td><input type="text" id="meigiName" name="meigiName" style="border:none;" /></td>
-    </tr>
-	</table>
-	
-	<div style="margin: 30px 0 10px 0; ">
-		<label style="font-size:20px; margin-right:18.5em;">技術経験</label> 
-		<label style="text-align: right; font-size:15px;">◎：実務経験１年以上 ／ ○：実務経験有り ／ △：知識有り</label>
-	</div>
-	<hr></hr>	
-	<table class="skill" style="width:50%;">
-		<tr>
-			<td rowspan='3' style="background-color:#d4e6f1; text-align:center;">ＯＳ</td>
-			<td>DOS</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
+		<p style="margin-top: 10px;">基本情報</p>
+		<hr></hr>
+		<form action="/syain/register" method="GET">
+			<div style="margin-bottom: 15px;">
+				<label style="margin-right: 5em;">社員コード:</label> <input type="text"
+					id="syainId" name="syainId"
+					style="margin: 0 25px 0 0; width: 8em; width: 8em;" />必須
+			</div>
+			<div style="margin-bottom: 15px;">
+				<label style="margin-right: 2em;">社員名（漢字)</label> 姓<input
+					type="text" id="firstNameKanji" name="firstNameKanji"
+					style="margin: 0 14px 0 14px; width: 8em;" /> 名<input type="text"
+					id="lastNameKanji" name="lastNameKanji"
+					style="margin: 0 25px 0 14px; width: 8em;" />必須
+			</div>
+			<div>
+				<label for="seibetu">性別 </label> <input type="radio" name="seibetu"
+					value="1" style="margin: 0 5px 0 95px;" />男 <input type="radio"
+					name="seibetu" value="2" style="margin-left: 20px;" />女
+			</div>
+			<p>会社関連情報</p>
+			<hr></hr>
+			<div style="margin-bottom: 15px;">
+				<label style="margin-right: 6em;">所属会社</label> <select
+					name="syozokuKaisya" style="height: 24px;">
+					<option value="1">株式会社ブライトスター</option>
+					<option value="2">株式会社トップクラウド</option>
 				</select>
-			</td>
-			<td>Windows</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
+			</div>
+			<div style="margin-bottom: 15px;">
+				<label style="margin-right: 7em;">入社日</label> <input type="date"
+					name="nyuusyaDate" id="nyuusyaDate" style="height: 20px;" />
+			</div>
+			<div style="margin-bottom: 15px;">
+				<label style="margin-right: 7em;">退社日</label> <input type="date"
+					name="taisyaDate" id="taisyaDate" style="height: 20px;" />
+			</div>
+			<div style="margin-bottom: 15px;">
+				<label style="margin-right: 6em;">職業種類 </label> <select
+					name="syokugyoKind" style="height: 22px;">
+					<option value="1">役員</option>
+					<option value="2">総務</option>
+					<option value="3">IT営業</option>
+					<option value="4">ITエンジニア</option>
+					<option value="5">不動産スタッフ</option>
+					<option value="6">個人事業主</option>
 				</select>
-			</td>			
-			<td>Unix</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>	
-			<td>Linux</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>	
-			<td>andriod</td>			
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>				
-		</tr>
-		<tr>
+			</div>
 
-			<td>IOS</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>
-			<td>AWS</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>			
-			<td>SAP</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>	
-			<td>Salesforce</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>	
-			<td>Cosminexus</td>			
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>				
-		</tr>	
-		<tr>
+			<p>給与関連情報</p>
+			<hr></hr>
+			<table>
+				<caption style="text-align: left;">給与振込口座</caption>
+				<tr style="background-color: skyblue; text-align: left;">
+					<th>金融機関コード</th>
+					<th style="width: 200px;">金融機関名</th>
+					<th>支店名コード</th>
+					<th style="width: 200px;">支店名</th>
+					<th style="width: 100px;">口座種類</th>
+					<th>口座番号</th>
+					<th>名義人</th>
+				</tr>
+				<tr>
+					<td class="tbr_01"><span class="bnk_area"> <input
+							type="text" name="kinyukikanCode" id="bank_code2"
+							class="form_txt-short" placeholder="例：0001"
+							style="position: relative; border: none;" /> <span
+							id="bank_code2_clear" class="bnk_class" style="display: none;">
+								<font style="vertical-align: inherit;"></font>
+						</span>
+					</span></td>
+					<td><span id="bank_name2" name="kinyukikanName"></span></td>
+					<td class="tbr_01"><span class="bnk_area"> <input
+							type="text" name="sitenCode" id="branch_code2"
+							class="form_txt-short" placeholder="例：310"
+							style="position: relative; border: none;" /> <span
+							id="branch_code2_clear" class="bnk_clear" style="display: none;">
+								<font style="vertical-align: inherit;"></font>
+						</span>
+					</span></td>
+					<td><span id="branch_name2"></span></td>
+					<!-- name="sitenName" -->
+					<td>普通</td>
+					<td><input type="text" id="kouzaNum" name="kouzaNum"
+						style="border: none;" /></td>
+					<td><input type="text" id="meigiName" name="meigiName"
+						style="border: none;" /></td>
+				</tr>
+			</table>
 
-			<td>docker</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>
-			<td>kubernetes</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>			
-			<td>containerd</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>	
-			<td>azure</td>
-			<td>
-				<select name="itOs">
-					<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
-					<option>◎</option>
-					<option>○</option>
-					<option>△</option>
-				</select>
-			</td>	
-			<td>&nbsp;</td>			
-		
-		</tr>	
-	</table>
-	<div style="margin-top:30px; background-color:#d4e6f1; border-style: solid; border-width:1px; border-bottom: none; width:250px; "><b> 備考及び自己アピール</b></div>
-	<textarea cols="85" rows="10"  required="required" id="itBikou" name="itBikou" style="overflow-y:scroll; resize: none;"></textarea>
+			<div style="margin: 30px 0 10px 0;">
+				<label style="font-size: 20px; margin-right: 18.5em;">技術経験</label> <label
+					style="text-align: right; font-size: 15px;">◎：実務経験１年以上 ／
+					○：実務経験有り ／ △：知識有り</label>
+			</div>
+			<hr></hr>
+			<table class="skill" style="width: 50%;">
+				<tr>
+					<td rowspan='3'
+						style="background-color: #d4e6f1; text-align: center;">ＯＳ</td>
+					<td>DOS</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>Windows</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>Unix</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>Linux</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>andriod</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+				</tr>
+				<tr>
 
-	<hr></hr>	
-<button type="submit" id="btn"><b>登 録</b></button>
-</form>
+					<td>IOS</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>AWS</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>SAP</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>Salesforce</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>Cosminexus</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+				</tr>
+				<tr>
+
+					<td>docker</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>kubernetes</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>containerd</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>azure</td>
+					<td><select name="itOs">
+							<option selected="selected" disabled="disabled" hidden="hidden">&nbsp;</option>
+							<option>◎</option>
+							<option>○</option>
+							<option>△</option>
+					</select></td>
+					<td>&nbsp;</td>
+
+				</tr>
+			</table>
+			<div
+				style="margin-top: 30px; background-color: #d4e6f1; border-style: solid; border-width: 1px; border-bottom: none; width: 250px;">
+				<b> 備考及び自己アピール</b>
+			</div>
+			<textarea cols="85" rows="10" required="required" id="itBikou"
+				name="itBikou" style="overflow-y: scroll; resize: none;"></textarea>
+
+			<hr></hr>
+			<button type="submit" id="btn">
+				<b>登 録</b>
+			</button>
+		</form>
 
 
 
-</div>
+	</div>
 </body>
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/common.js"></script>

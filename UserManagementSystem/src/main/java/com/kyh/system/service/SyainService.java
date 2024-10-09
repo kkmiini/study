@@ -15,9 +15,9 @@ public interface SyainService {
 	
 	//public List<Syain> list();
 
-	public List<Syain> listByLastNameKanji(String lastNameKanji);
-
 	public int register(Syain syain);
+
+	public List<Syain> listByinfo(String lastNameKanji, String syozokuKaisya, String syokugyoKind);
 
 	
 }
