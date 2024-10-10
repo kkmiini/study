@@ -65,8 +65,21 @@
 	  #{sitenName}, #{kouzaKind}, #{kouzaNum}, #{meigiName}, #{itOs}, #{itBikou} )
   </insert>
   
-  
+  <select id="searchCount" resultType="Integer">
+  select 
+  count(LAST_NAME_KANJI)
+  from SYAIN_MAIN
+	WHERE LAST_NAME_KANJI = #{lastNameKanji,jdbcType=VARCHAR}
+	and SYOZOKU_KAISYA = #{syozokuKaisya,jdbcType=INTEGER}
+	and SYOKUGYO_KIND = #{syokugyoKind,jdbcType=INTEGER} 
+  </select> 
  	
+ 	
+ <delete id="deleteSyain" parameterType="com.kyh.system.entity.Syain">
+    DELETE FROM SYAIN_MAIN
+    WHERE FIRST_NAME_KANJI = #{firstNameKanji, jdbcType=VARCHAR}
+      AND LAST_NAME_KANJI = #{lastNameKanji, jdbcType=VARCHAR}
+</delete>
  	
  	
 </mapper>

@@ -60,6 +60,22 @@ public class SyainServiceImpl implements SyainService {
 		return syainMapper.listByinfo(lastNameKanji, syozokuKaisya, syokugyoKind);
 	}
 
+	@Override
+	public Integer searchCount(String lastNameKanji, String syozokuKaisya, String syokugyoKind) {
+		// TODO Auto-generated method stub
+		return syainMapper.searchCount(lastNameKanji, syozokuKaisya, syokugyoKind);
+	}
+
+
+
+	@Override
+	public int deleteSyain(String firstNameKanji, String lastNameKanji) {
+		// TODO Auto-generated method stub
+		return syainMapper.deleteSyain(firstNameKanji, lastNameKanji);
+	}
+	
+	
+
 
 
 

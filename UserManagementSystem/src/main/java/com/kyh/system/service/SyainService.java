@@ -19,5 +19,14 @@ public interface SyainService {
 
 	public List<Syain> listByinfo(String lastNameKanji, String syozokuKaisya, String syokugyoKind);
 
+	public Integer searchCount(String lastNameKanji, String syozokuKaisya, String syokugyoKind);
+
+	
+
+	public int deleteSyain(String firstNameKanji, String lastNameKanji);
+	
+	
+
+
 	
 }
