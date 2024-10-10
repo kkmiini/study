@@ -108,7 +108,8 @@ button:active {
 			<p style="margin: 30px 0px 15px 0px;">■社員一覧</p>
 			<div style="width: 50%; text-align: right; font-size: 15px;">
 				<span style="margin: 0 1% 0 0;">件数：</span> <span
-					style="margin: 0 10% 0 0; color: blue;">0件</span> <span
+					style="margin: 0 10% 0 0; color: blue;"
+					th:text="${count + '件'}">0件</span> <span
 					style="margin: 0 4.5% 0 0; color: blue;"><a href="/register">新規登録</a></span>
 			</div>
 			<table style="width: 50%; text-align: center;">
@@ -126,7 +127,12 @@ button:active {
 						th:text="${item.syozokuKaisya == 1 ? '株式会社ブライトスター' : '株式会社トップクラウド'}"></td>
 					<td th:text="${item.firstNameKanji} + ' ' + ${item.lastNameKanji}"></td>
 					<td th:text="${item.seibetu == 1 ? '男' : '女'}"></td>
-					<td th:text="${item.syokugyoKind == 1 ? 'ITエンジニア' : 'その他'}"></td>
+					<td th:text="${item.syokugyoKind == 1 ? '役員' : 
+				               item.syokugyoKind == 2 ? '総務' : 
+				               item.syokugyoKind == 3 ? 'IT営業' : 
+				               item.syokugyoKind == 4 ? 'ITエンジニア' : 
+				               item.syokugyoKind == 5 ? '不動産スタッフ' : 
+				               item.syokugyoKind == 6 ? '個人事業主' : 'その他'}"></td>
 					<td
 						th:text="${item.nyuusyaDate != null ? #dates.format(item.nyuusyaDate, 'yyyy/MM/dd') : 'N/A'}"></td>
 					<td
@@ -142,12 +148,12 @@ button:active {
 				               item.syokugyoKind == 5 ? '不動産スタッフ' : 
 				               item.syokugyoKind == 6 ? '個人事業主' : 'その他'}, 
             	 nyuusyaDate=${item.nyuusyaDate != null ? #dates.format(item.nyuusyaDate, 'yyyy-MM-dd') : ''}, 
-            	taisyaDate=${item.taisyaDate != null ?item.taisyaDate : 'N/A'})}">更新</a>
-						<a>削除</a></td>
+            	taisyaDate=${item.taisyaDate != null ? #dates.format(item.taisyaDate, 'yyyy-MM-dd') : ''})}">更新</a>
+						<a th:href="@{/delete(firstNameKanji=${item.firstNameKanji}, lastNameKanji=${item.lastNameKanji})}" id="delete">削除</a></td>
 				</tr>
 			</table>
 		</div>
 	</form>
 </body>
-<!--  <script type="text/javascript" src="/js/management.js"></script> -->
+<script type="text/javascript" src="/js/management.js"></script> 
 </html>

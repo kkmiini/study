@@ -1,6 +1,8 @@
 package com.kyh.system.controller;
 
 
+
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +28,7 @@ public class SyainController {
 	@Autowired
     private SyainService syainService;
 	
+	// register
 	@RequestMapping("/syain/register")
 	public String register(
 			@RequestParam Integer syainId,
@@ -73,24 +78,26 @@ public class SyainController {
 		return "/login/register";
 	}
 	
+	// management
 	@RequestMapping("/syain/management")
 	public String list(@RequestParam String lastNameKanji, 
 			@RequestParam String syozokuKaisya,
 			@RequestParam String syokugyoKind,
 			Model model) {
-	    System.out.println("입력된 lastNameKanji: " + lastNameKanji); // 값 확인
+	    System.out.println("입력된 lastNameKanji: " + lastNameKanji); 
 
-	    // 입력받은 lastNameKanji를 기반으로 검색
 	    List<Syain> list = syainService.listByinfo(lastNameKanji, syozokuKaisya, syokugyoKind);
-	    
-	    
-	    // 모델에 검색 결과 추가
+	    Integer count = syainService.searchCount(lastNameKanji, syozokuKaisya, syokugyoKind);
+
 	    model.addAttribute("item", list);  
+	    model.addAttribute("count", count);
+	    
+	    System.out.println(count);
 
 	    return "/login/management";   
 	}
 	
-	
+	// update
 	@GetMapping("/modify")
 	public String updatePage(@RequestParam String firstNameKanji, @RequestParam String lastNameKanji,
 			@RequestParam String seibetu, @RequestParam String syozokuKaisya,  @RequestParam String syokugyoKind, @RequestParam String nyuusyaDate, @RequestParam String taisyaDate, Model model) {
@@ -115,8 +122,6 @@ public class SyainController {
 	    }
 	    
 
-	   
-	    	
 		info.setFirstNameKanji(firstNameKanji); 
 		info.setLastNameKanji(lastNameKanji);
 		
@@ -124,15 +129,13 @@ public class SyainController {
 		info.setSyozokuKaisya(syozokuKaisyaInt);
 		info.setSyokugyoKind(syokugyoKindInt);
 		
-	
-		
 		 // nyuusyaDate가 "N/A"가 아닌 경우에만 파싱
 	    if (!"N/A".equals(nyuusyaDate) && !nyuusyaDate.isEmpty()) {
 	        SimpleDateFormat dateFormat_n = new SimpleDateFormat("yyyy-MM-dd");
 	        try {
 	            Date nyuusyaDateParsed = dateFormat_n.parse(nyuusyaDate);
 	            info.setNyuusyaDate(nyuusyaDateParsed);
-	            System.out.println(nyuusyaDateParsed);
+	           
 	        } catch (ParseException e) {
 	            e.printStackTrace();
 	            info.setNyuusyaDate(null); // 오류 발생 시 null 설정
@@ -147,6 +150,9 @@ public class SyainController {
 	        try {
 	            Date taisyaDateParsed = dateFormat_t.parse(taisyaDate);
 	            info.setTaisyaDate(taisyaDateParsed);
+	            
+	         
+	            
 	        } catch (ParseException e) {
 	            e.printStackTrace();
 	            info.setTaisyaDate(null); // 오류 발생 시 null 설정
@@ -154,11 +160,9 @@ public class SyainController {
 	    } else {
 	        info.setTaisyaDate(null); // "N/A"일 경우 null 설정
 	    }
-	  
-		
-		//System.out.println(seibetu);
-		
-		
+	    System.out.println("Before parsing taisyaDate: " + taisyaDate);
+        System.out.println("Parsed taisyaDate: " + info.getTaisyaDate());
+
 		 model.addAttribute("info", info);  
 		 
 		 
@@ -166,19 +170,24 @@ public class SyainController {
 	    return "/login/update";  // 업데이트 페이지로 이동
 	}
 	
+	//delete
+	@GetMapping("/delete")
+	public String delete(@RequestParam String firstNameKanji, 
+	                                      @RequestParam String lastNameKanji) {
+	    int result = syainService.deleteSyain(firstNameKanji, lastNameKanji);
+
+	    if (result > 0) {
+	        // 삭제 성공 시 리다이렉트
+	        return "/login/management";
+	                          
+	        
+	    } else {
+	    	return "/login/management";
+	    	
+	    }
+	
 	
     }
 	
-	
-	
-	
 
-    
-
-    
-    
-
-
-
-
-
+}
